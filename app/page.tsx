@@ -1,6 +1,11 @@
-import { createServerClient } from "@/lib/supabase/server"
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { AnimatedHeroSlider } from "@/components/hero/animated-hero-slider"
+import { ConsultationBooking } from "@/components/booking/consultation-booking"
+import { AIChatbot } from "@/components/chat/ai-chatbot"
 import Link from "next/link"
 import Image from "next/image"
 import {
@@ -95,77 +100,55 @@ const industries = [
     title: "AI in Healthcare",
     description:
       "Revolutionize patient care with diagnostic AI, predictive analytics, and personalized treatment plans.",
-    image: "/placeholder-ut40t.png",
+    image: "/ai-healthcare.jpg",
   },
   {
     title: "AI in Manufacturing",
     description: "Optimize production with predictive maintenance, quality control AI, and smart factory solutions.",
-    image: "/placeholder-i06xq.png",
+    image: "/ai-manufacturing.jpg",
   },
   {
     title: "AI in Retail",
     description:
       "Enhance customer experience with personalized recommendations, inventory optimization, and demand forecasting.",
-    image: "/placeholder-pvb6b.png",
+    image: "/ai-retail.jpg",
   },
   {
     title: "AI in BFSI",
     description:
       "Strengthen financial services with fraud detection, risk assessment, and algorithmic trading solutions.",
-    image: "/placeholder-yreyx.png",
+    image: "/ai-finance.jpg",
   },
 ]
 
-export default async function HomePage() {
-  const supabase = createServerClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+export default function HomePage() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false)
+  const [isChatOpen, setIsChatOpen] = useState(false)
 
-  let userData = null
-  if (user) {
-    const { data } = await supabase
-      .from("users")
-      .select("id, email, full_name, avatar_url, role")
-      .eq("id", user.id)
-      .single()
-    userData = data
+  const handleBookConsultation = () => {
+    setIsBookingOpen(true)
+  }
+
+  const handleChatExpert = () => {
+    setIsChatOpen(true)
   }
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-              Build Your AI-Native Enterprise Today
-            </h1>
-            <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
-              Leverage Generative AI, Machine Learning, and Data Engineering to scale innovation and transform your
-              business operations.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Button asChild size="lg" className="px-8">
-                <Link href="/contact">
-                  Get Your Free AI Strategy Call
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="px-8 bg-transparent">
-                <Link href="/portfolio">View AI Solutions</Link>
-              </Button>
-            </div>
+      <AnimatedHeroSlider onBookConsultation={handleBookConsultation} onChatExpert={handleChatExpert} />
 
-            {/* Brand Snapshot */}
-            <div className="text-center text-muted-foreground">
-              <p className="text-lg font-medium">
-                500+ AI-powered solutions delivered | Trusted by Fortune 500 clients | 15+ Years of Digital Innovation
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Brand Snapshot */}
+      <div className="text-center text-muted-foreground py-12 lg:py-16 bg-muted/50">
+        <p className="text-lg font-medium">
+          500+ AI-powered solutions delivered | Trusted by Fortune 500 clients | 15+ Years of Digital Innovation
+        </p>
+      </div>
+
+      {/* Booking and Chat Modals */}
+      <ConsultationBooking isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+
+      <AIChatbot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
 
       {/* Stats Section */}
       <section className="py-12 lg:py-16 bg-muted/50">
@@ -203,6 +186,14 @@ export default async function HomePage() {
                   className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/20"
                 >
                   <CardContent className="p-6">
+                    <div className="aspect-video relative overflow-hidden rounded-lg mb-4">
+                      <Image
+                        src={`/service-${index + 1}.jpg`}
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                       <IconComponent className="h-6 w-6 text-primary" />
                     </div>

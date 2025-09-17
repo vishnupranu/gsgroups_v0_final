@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import { ArrowRight, Brain, Cloud, Database, Cpu, Shield, BarChart3, Zap, Code, Cog } from "lucide-react"
+import { AnimatedHeroSlider } from "@/components/hero/animated-hero-slider"
 
 const services = [
   {
@@ -74,30 +75,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-              AI & Digital Transformation Services
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
-              Comprehensive AI solutions and digital transformation services that accelerate innovation, optimize
-              operations, and create new revenue streams for your business.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="px-8">
-                <Link href="/contact">
-                  Get Free AI Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="px-8 bg-transparent">
-                <Link href="/resources/case-studies">View Success Stories</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AnimatedHeroSlider />
 
       {/* Services Grid */}
       <section className="py-16 lg:py-20">
@@ -118,8 +96,16 @@ export default function ServicesPage() {
                   className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/20"
                 >
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                      <IconComponent className="h-6 w-6 text-primary" />
+                    <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+                      <img
+                        src={`/service-${index + 1}.jpg`}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      <div className="absolute top-4 left-4 w-12 h-12 bg-primary/90 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                        <IconComponent className="h-6 w-6 text-white" />
+                      </div>
                     </div>
                     <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-200">
                       {service.title}

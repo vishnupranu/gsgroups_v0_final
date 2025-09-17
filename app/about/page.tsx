@@ -1,32 +1,31 @@
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { AnimatedHeroSlider } from "@/components/hero/animated-hero-slider"
+import { ConsultationBooking } from "@/components/booking/consultation-booking"
+import { AIChatbot } from "@/components/chat/ai-chatbot"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Brain, Award, Zap, Target, Shield } from "lucide-react"
 
 export default function AboutPage() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false)
+  const [isChatOpen, setIsChatOpen] = useState(false)
+
+  const handleBookConsultation = () => {
+    setIsBookingOpen(true)
+  }
+
+  const handleChatExpert = () => {
+    setIsChatOpen(true)
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-              Leadership Team Driving AI Innovation
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
-              Meet the visionary leaders and AI experts who are transforming businesses across industries with
-              cutting-edge artificial intelligence and digital transformation solutions.
-            </p>
-            <Button asChild size="lg" className="px-8">
-              <Link href="/contact">
-                Join Our AI Experts
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <AnimatedHeroSlider onBookConsultation={handleBookConsultation} onChatExpert={handleChatExpert} />
 
       {/* Company Story Section */}
       <section className="py-16 lg:py-20">
@@ -49,7 +48,7 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?key=ai-team"
+                src="/about-ai-team.jpg"
                 alt="GSGROUPS AI team collaboration"
                 width={600}
                 height={400}
@@ -69,6 +68,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="text-center border-border">
               <CardContent className="p-6">
+                <div className="aspect-video relative overflow-hidden rounded-lg mb-4">
+                  <Image src="/ai-innovation-principle.jpg" alt="AI Innovation" fill className="object-cover" />
+                </div>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Brain className="w-8 h-8 text-primary" />
                 </div>
@@ -81,6 +83,9 @@ export default function AboutPage() {
             </Card>
             <Card className="text-center border-border">
               <CardContent className="p-6">
+                <div className="aspect-video relative overflow-hidden rounded-lg mb-4">
+                  <Image src="/business-impact-principle.jpg" alt="Business Impact" fill className="object-cover" />
+                </div>
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Target className="w-8 h-8 text-accent" />
                 </div>
@@ -92,6 +97,9 @@ export default function AboutPage() {
             </Card>
             <Card className="text-center border-border">
               <CardContent className="p-6">
+                <div className="aspect-video relative overflow-hidden rounded-lg mb-4">
+                  <Image src="/ethical-ai-principle.jpg" alt="Ethical AI" fill className="object-cover" />
+                </div>
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-primary" />
                 </div>
@@ -119,28 +127,28 @@ export default function AboutPage() {
               {
                 name: "Dr. Sarah Chen",
                 role: "Chief AI Officer",
-                image: "/placeholder.svg?key=cai-officer",
+                image: "/leader-sarah-chen.jpg",
                 expertise: "PhD in Machine Learning, Former Google AI Research",
                 achievements: "Led 100+ AI implementations",
               },
               {
                 name: "Michael Rodriguez",
                 role: "VP of Digital Transformation",
-                image: "/placeholder.svg?key=vp-digital",
+                image: "/leader-michael-rodriguez.jpg",
                 expertise: "15+ years enterprise architecture, ex-Microsoft",
                 achievements: "Transformed 50+ Fortune 500 companies",
               },
               {
                 name: "Dr. Emily Wang",
                 role: "Head of Data Science",
-                image: "/placeholder.svg?key=head-data",
+                image: "/leader-emily-wang.jpg",
                 expertise: "PhD in Statistics, Former Amazon ML Scientist",
                 achievements: "Built predictive models saving $100M+",
               },
               {
                 name: "David Kim",
                 role: "Director of AI Engineering",
-                image: "/placeholder.svg?key=director-ai",
+                image: "/leader-david-kim.jpg",
                 expertise: "ML Engineering at Scale, ex-Tesla Autopilot",
                 achievements: "Deployed AI systems serving 10M+ users",
               },
@@ -223,6 +231,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Booking and Chat Modals */}
+      <ConsultationBooking isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+
+      <AIChatbot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>
   )
 }
