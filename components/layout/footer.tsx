@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin } from "lucide-react"
 
 const services = [
   { name: "Web Design", href: "/services/web-design" },
@@ -37,7 +37,7 @@ export function Footer() {
             <div className="lg:col-span-1">
               <Link href="/" className="flex items-center space-x-2 mb-4">
                 <Image
-                  src="/images/gsgroups-logo.png"
+                  src="/images/gslogo.png"
                   alt="GSGROUPS"
                   width={160}
                   height={36}
@@ -45,23 +45,19 @@ export function Footer() {
                 />
               </Link>
               <p className="text-sm text-secondary-foreground/80 mb-6 max-w-sm">
-                We create stunning digital experiences that drive results. Your trusted partner for web design,
-                branding, and digital marketing.
+                Leading AI & Digital Transformation company delivering cutting-edge solutions. 500+ AI-powered projects
+                for Fortune 500 clients worldwide.
               </p>
 
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-sm">
                   <Mail className="h-4 w-4 text-accent" />
-                  <span>hello@gsgroups.com</span>
-                </div>
-                <div className="flex items-center space-x-3 text-sm">
-                  <Phone className="h-4 w-4 text-accent" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>sales@gsgroups.net</span>
                 </div>
                 <div className="flex items-center space-x-3 text-sm">
                   <MapPin className="h-4 w-4 text-accent" />
-                  <span>New York, NY</span>
+                  <span>Global AI Innovation Hub</span>
                 </div>
               </div>
             </div>

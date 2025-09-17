@@ -6,28 +6,91 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ChevronRight, User, Settings, Share2, Smartphone, Bell, MessageCircle, Calendar } from "lucide-react"
+import {
+  Menu,
+  X,
+  ChevronRight,
+  User,
+  Settings,
+  Share2,
+  Smartphone,
+  Home,
+  Cog,
+  Building2,
+  BookOpen,
+  Briefcase,
+  Users,
+  Phone,
+  Cpu,
+  Brain,
+  Cloud,
+  Database,
+  Wifi,
+  Blocks,
+  Bot,
+  Code,
+  TestTube,
+  Heart,
+  ShoppingCart,
+  Banknote,
+  Factory,
+  Wheat,
+  Gamepad2,
+  FileText,
+  Search,
+  Video,
+  Trophy,
+} from "lucide-react"
 import { cn } from "@/lib/utils"
-import { UserMenu } from "@/components/auth/user-menu"
 import { SocialDock } from "@/components/layout/social-dock"
+import { MainHeader } from "@/components/layout/main-header"
 
 const navigation = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "/", icon: Home },
   {
     name: "Services",
     href: "/services",
+    icon: Cog,
     submenu: [
-      { name: "Web Design", href: "/services/web-design" },
-      { name: "Branding", href: "/services/branding" },
-      { name: "Mobile Apps", href: "/services/mobile-apps" },
-      { name: "E-commerce", href: "/services/e-commerce" },
-      { name: "Digital Marketing", href: "/services/digital-marketing" },
+      { name: "AI Development & Generative AI Solutions", href: "/services/ai-development", icon: Brain },
+      { name: "Machine Learning & Predictive Analytics", href: "/services/machine-learning", icon: Cpu },
+      { name: "Cloud Services & DevOps", href: "/services/cloud-devops", icon: Cloud },
+      { name: "Enterprise Data Engineering", href: "/services/data-engineering", icon: Database },
+      { name: "IoT Solutions & Smart Device Integration", href: "/services/iot-solutions", icon: Wifi },
+      { name: "Blockchain Development Services", href: "/services/blockchain", icon: Blocks },
+      { name: "Agentic AI & Intelligent Automation", href: "/services/agentic-ai", icon: Bot },
+      { name: "Software Product Engineering", href: "/services/software-engineering", icon: Code },
+      { name: "QA Testing & Continuous Delivery", href: "/services/qa-testing", icon: TestTube },
     ],
   },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  {
+    name: "Industries",
+    href: "/industries",
+    icon: Building2,
+    submenu: [
+      { name: "AI Solutions for Healthcare", href: "/industries/healthcare", icon: Heart },
+      { name: "AI Solutions for Retail & E-Commerce", href: "/industries/retail", icon: ShoppingCart },
+      { name: "AI for BFSI", href: "/industries/bfsi", icon: Banknote },
+      { name: "AI for Manufacturing & Supply Chain", href: "/industries/manufacturing", icon: Factory },
+      { name: "AI in Agriculture & Smart Farming", href: "/industries/agriculture", icon: Wheat },
+      { name: "AI for Gaming & Entertainment", href: "/industries/gaming", icon: Gamepad2 },
+    ],
+  },
+  {
+    name: "Resources",
+    href: "/resources",
+    icon: BookOpen,
+    submenu: [
+      { name: "Case Studies", href: "/resources/case-studies", icon: FileText },
+      { name: "Research & Industry Reports", href: "/resources/research", icon: Search },
+      { name: "Blog: AI Trends & Innovation", href: "/blog", icon: BookOpen },
+      { name: "Webinars & Thought Leadership", href: "/resources/webinars", icon: Video },
+    ],
+  },
+  { name: "Portfolio", href: "/portfolio", icon: Trophy },
+  { name: "Leadership Team", href: "/about", icon: Users },
+  { name: "Careers", href: "/careers", icon: Briefcase },
+  { name: "Contact Us", href: "/contact", icon: Phone },
 ]
 
 interface ShellLayoutProps {
@@ -45,7 +108,6 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const [showMobilePreview, setShowMobilePreview] = useState(false)
-  const [showAuthModal, setShowAuthModal] = useState<string | null>(null)
 
   const handleShare = async () => {
     try {
@@ -57,40 +119,13 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Top Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-background border-b border-border">
-        <div className="flex items-center justify-end h-full px-4 space-x-4">
-          <Button variant="outline" size="sm">
-            <Calendar className="h-4 w-4 mr-2" />
-            Book Appointment
-          </Button>
-          <Button variant="outline" size="sm">
-            <MessageCircle className="h-4 w-4 mr-2" />
-            Chat AI
-          </Button>
-          <Button variant="ghost" size="sm">
-            <Bell className="h-4 w-4" />
-          </Button>
-          {user ? (
-            <UserMenu user={user} />
-          ) : (
-            <>
-              <Button variant="ghost" size="sm" onClick={() => setShowAuthModal("login")}>
-                Login
-              </Button>
-              <Button size="sm" onClick={() => setShowAuthModal("register")}>
-                Register
-              </Button>
-            </>
-          )}
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+      <MainHeader user={user} />
 
       {/* Left Sticky Panel */}
       <aside
         className={cn(
-          "fixed left-0 top-16 bottom-16 z-40 bg-card border-r border-border transition-all duration-300 overflow-y-auto",
+          "fixed left-0 top-24 bottom-16 z-40 bg-gradient-to-b from-slate-800/95 to-blue-900/95 backdrop-blur-sm border-r border-blue-500/20 transition-all duration-300 overflow-y-auto",
           isCollapsed ? "w-16" : "w-64",
         )}
       >
@@ -99,19 +134,24 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
           <div className="flex items-center justify-between mb-6">
             {!isCollapsed && (
               <Link href="/" className="flex items-center">
-                <Image src="/images/gsgroups-logo.png" alt="GSGROUPS" width={140} height={32} className="h-8 w-auto" />
+                <Image src="/images/gslogo.png" alt="GSGROUPS" width={140} height={32} className="h-8 w-auto" />
               </Link>
             )}
-            <Button variant="ghost" size="sm" onClick={() => setIsCollapsed(!isCollapsed)} className="p-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+              className="p-2 text-white hover:bg-white/10"
+            >
               <Menu className="h-4 w-4" />
             </Button>
           </div>
 
           {/* User Profile Section (when logged in) */}
           {user && (
-            <div className="mb-6 pb-6 border-b border-border">
+            <div className="mb-6 pb-6 border-b border-blue-500/20">
               <div className={cn("flex items-center", isCollapsed ? "justify-center" : "space-x-3")}>
-                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-medium">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
                   {user.avatar_url ? (
                     <Image
                       src={user.avatar_url || "/placeholder.svg"}
@@ -126,8 +166,8 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
                 </div>
                 {!isCollapsed && (
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-foreground truncate">{user.full_name || "User"}</p>
-                    <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                    <p className="text-sm font-medium text-white truncate">{user.full_name || "User"}</p>
+                    <p className="text-xs text-blue-200 truncate">{user.email}</p>
                   </div>
                 )}
               </div>
@@ -136,21 +176,21 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
                 <div className="mt-4 space-y-2">
                   <Link
                     href="/profile"
-                    className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="flex items-center space-x-2 text-sm text-blue-200 hover:text-white transition-colors"
                   >
                     <User className="h-4 w-4" />
                     <span>Profile</span>
                   </Link>
                   <Link
                     href="/settings"
-                    className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="flex items-center space-x-2 text-sm text-blue-200 hover:text-white transition-colors"
                   >
                     <Settings className="h-4 w-4" />
                     <span>Settings</span>
                   </Link>
                   <Link
                     href="/refer"
-                    className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="flex items-center space-x-2 text-sm text-blue-200 hover:text-white transition-colors"
                   >
                     <Share2 className="h-4 w-4" />
                     <span>Refer</span>
@@ -162,45 +202,54 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
 
           {/* Navigation */}
           <nav className="space-y-2">
-            {navigation.map((item) => (
-              <div key={item.name}>
-                <div
-                  className={cn(
-                    "flex items-center justify-between p-2 rounded-md text-sm font-medium transition-colors cursor-pointer",
-                    "text-foreground hover:bg-muted hover:text-accent",
-                  )}
-                  onClick={() => {
-                    if (item.submenu) {
-                      setActiveSubmenu(activeSubmenu === item.name ? null : item.name)
-                    }
-                  }}
-                >
-                  <Link href={item.href} className="flex items-center space-x-2 flex-1">
-                    <span className={cn(isCollapsed && "sr-only")}>{item.name}</span>
-                  </Link>
-                  {item.submenu && !isCollapsed && (
-                    <ChevronRight
-                      className={cn("h-4 w-4 transition-transform", activeSubmenu === item.name && "rotate-90")}
-                    />
+            {navigation.map((item) => {
+              const IconComponent = item.icon
+              return (
+                <div key={item.name}>
+                  <div
+                    className={cn(
+                      "flex items-center justify-between p-3 rounded-lg text-sm font-medium transition-all cursor-pointer group",
+                      "text-blue-100 hover:bg-gradient-to-r hover:from-blue-600/50 hover:to-purple-600/50 hover:text-white",
+                      isCollapsed && "justify-center",
+                    )}
+                    onClick={() => {
+                      if (item.submenu) {
+                        setActiveSubmenu(activeSubmenu === item.name ? null : item.name)
+                      }
+                    }}
+                  >
+                    <Link href={item.href} className="flex items-center space-x-3 flex-1">
+                      <IconComponent className="h-5 w-5 flex-shrink-0" />
+                      <span className={cn(isCollapsed && "sr-only")}>{item.name}</span>
+                    </Link>
+                    {item.submenu && !isCollapsed && (
+                      <ChevronRight
+                        className={cn("h-4 w-4 transition-transform", activeSubmenu === item.name && "rotate-90")}
+                      />
+                    )}
+                  </div>
+
+                  {/* Submenu */}
+                  {item.submenu && activeSubmenu === item.name && !isCollapsed && (
+                    <div className="ml-4 mt-2 space-y-1">
+                      {item.submenu.map((subItem) => {
+                        const SubIconComponent = subItem.icon
+                        return (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="flex items-center space-x-3 p-2 text-sm text-blue-200 hover:text-white hover:bg-blue-600/30 rounded-md transition-colors"
+                          >
+                            <SubIconComponent className="h-4 w-4 flex-shrink-0" />
+                            <span>{subItem.name}</span>
+                          </Link>
+                        )
+                      })}
+                    </div>
                   )}
                 </div>
-
-                {/* Submenu */}
-                {item.submenu && activeSubmenu === item.name && !isCollapsed && (
-                  <div className="ml-4 mt-2 space-y-1">
-                    {item.submenu.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block p-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+              )
+            })}
           </nav>
 
           {/* Bottom Actions */}
@@ -209,7 +258,10 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
               variant="ghost"
               size="sm"
               onClick={handleShare}
-              className={cn("w-full justify-start", isCollapsed && "justify-center")}
+              className={cn(
+                "w-full justify-start text-blue-100 hover:bg-blue-600/30 hover:text-white",
+                isCollapsed && "justify-center",
+              )}
             >
               <Share2 className="h-4 w-4" />
               {!isCollapsed && <span className="ml-2">Share Site</span>}
@@ -218,7 +270,10 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
               variant="ghost"
               size="sm"
               onClick={() => setShowMobilePreview(!showMobilePreview)}
-              className={cn("w-full justify-start", isCollapsed && "justify-center")}
+              className={cn(
+                "w-full justify-start text-blue-100 hover:bg-blue-600/30 hover:text-white",
+                isCollapsed && "justify-center",
+              )}
             >
               <Smartphone className="h-4 w-4" />
               {!isCollapsed && <span className="ml-2">View Mobile</span>}
@@ -228,19 +283,19 @@ export function ShellLayout({ children, user }: ShellLayoutProps) {
       </aside>
 
       {/* Main Content */}
-      <main className={cn("transition-all duration-300 pt-16 pb-16", isCollapsed ? "ml-16" : "ml-64")}>
-        <div className="min-h-[calc(100vh-8rem)]">{children}</div>
+      <main className={cn("transition-all duration-300 pt-24 pb-16", isCollapsed ? "ml-16" : "ml-64")}>
+        <div className="min-h-[calc(100vh-10rem)]">{children}</div>
       </main>
 
       {/* Fixed Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 z-40 h-16 bg-card border-t border-border">
+      <footer className="fixed bottom-0 left-0 right-0 z-40 h-16 bg-gradient-to-r from-slate-800/95 to-blue-900/95 backdrop-blur-sm border-t border-blue-500/20">
         <div className="flex items-center justify-between h-full px-4">
           {/* Social Dock */}
           <SocialDock />
 
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-            <Link href="mailto:info@gsgroups.net" className="hover:text-foreground transition-colors">
-              info@gsgroups.net
+          <div className="flex items-center space-x-4 text-sm text-blue-200">
+            <Link href="mailto:sales@gsgroups.net" className="hover:text-white transition-colors">
+              sales@gsgroups.net
             </Link>
             <span>© 2025 All rights reserved gsgroups.net | Design and Developed by Guidesoft IT Solutions</span>
           </div>

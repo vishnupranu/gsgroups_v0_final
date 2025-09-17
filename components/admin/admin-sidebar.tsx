@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -94,18 +95,23 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
   return (
     <div
       className={cn(
-        "flex flex-col h-full bg-card border-r border-border transition-all duration-300",
+        "flex flex-col h-full bg-gradient-to-b from-slate-800/95 to-blue-900/95 backdrop-blur-sm border-r border-blue-500/20 transition-all duration-300",
         collapsed ? "w-16" : "w-64",
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-border">
+      <div className="flex items-center justify-between p-4 border-b border-blue-500/20">
         {!collapsed && (
           <Link href="/admin" className="flex items-center space-x-2">
-            <Image src="/images/gsgroups-logo.png" alt="GSGROUPS" width={120} height={27} className="h-6 w-auto" />
+            <Image src="/images/gslogo.png" alt="GSGROUPS" width={120} height={27} className="h-6 w-auto" />
           </Link>
         )}
-        <Button variant="ghost" size="sm" onClick={() => setCollapsed(!collapsed)} className="h-8 w-8 p-0">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setCollapsed(!collapsed)}
+          className="h-8 w-8 p-0 text-white hover:bg-white/10"
+        >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
         </Button>
       </div>
@@ -120,7 +126,10 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
                 <div key={item.name}>
                   <Button
                     variant="ghost"
-                    className={cn("w-full justify-start h-9 px-3", collapsed && "justify-center px-0")}
+                    className={cn(
+                      "w-full justify-start h-9 px-3 text-blue-100 hover:bg-blue-600/30 hover:text-white",
+                      collapsed && "justify-center px-0",
+                    )}
                     onClick={() => !collapsed && toggleExpanded(item.name)}
                   >
                     <item.icon className="h-4 w-4 flex-shrink-0" />
@@ -140,8 +149,8 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
                           size="sm"
                           asChild
                           className={cn(
-                            "w-full justify-start h-8 px-3 text-muted-foreground",
-                            pathname === child.href && "bg-accent text-accent-foreground",
+                            "w-full justify-start h-8 px-3 text-blue-200 hover:text-white hover:bg-blue-600/30",
+                            pathname === child.href && "bg-blue-600/50 text-white",
                           )}
                         >
                           <Link href={child.href}>
@@ -162,8 +171,8 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
                 variant="ghost"
                 asChild
                 className={cn(
-                  "w-full justify-start h-9 px-3",
-                  pathname === item.href && "bg-accent text-accent-foreground",
+                  "w-full justify-start h-9 px-3 text-blue-100 hover:bg-blue-600/30 hover:text-white",
+                  pathname === item.href && "bg-blue-600/50 text-white",
                   collapsed && "justify-center px-0",
                 )}
               >
@@ -180,15 +189,15 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
       {/* User Info */}
       {!collapsed && (
         <>
-          <Separator />
+          <Separator className="border-blue-500/20" />
           <div className="p-4">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-medium">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
                 {user.full_name?.[0] || user.email[0].toUpperCase()}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground truncate">{user.full_name || "Admin User"}</p>
-                <p className="text-xs text-muted-foreground truncate capitalize">{user.role.replace("_", " ")}</p>
+                <p className="text-sm font-medium text-white truncate">{user.full_name || "Admin User"}</p>
+                <p className="text-xs text-blue-200 truncate capitalize">{user.role.replace("_", " ")}</p>
               </div>
             </div>
           </div>

@@ -3,56 +3,116 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, CheckCircle, Star, Users, Award, Zap } from "lucide-react"
-import HeroSlider from "@/components/hero/hero-slider"
+import {
+  ArrowRight,
+  CheckCircle,
+  Star,
+  Users,
+  Award,
+  Zap,
+  Brain,
+  Cloud,
+  Database,
+  Cpu,
+  Shield,
+  BarChart3,
+} from "lucide-react"
 
 const services = [
   {
-    title: "Web Design & Development",
+    title: "Custom AI Development",
     description:
-      "Custom websites that convert visitors into customers with stunning design and seamless functionality.",
-    icon: "🎨",
-    features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Mobile First"],
+      "Build intelligent applications with Generative AI, Machine Learning, and custom AI models tailored to your business needs.",
+    icon: Brain,
+    features: ["Generative AI Solutions", "Custom ML Models", "AI Integration", "Intelligent Automation"],
   },
   {
-    title: "Brand Identity & Logo Design",
-    description: "Create a memorable brand identity that stands out and resonates with your target audience.",
-    icon: "🎯",
-    features: ["Logo Design", "Brand Guidelines", "Color Palette", "Typography"],
+    title: "Cloud-Native Solutions",
+    description: "Accelerate your digital transformation with scalable cloud infrastructure and DevOps practices.",
+    icon: Cloud,
+    features: ["Cloud Migration", "DevOps Automation", "Microservices", "Container Orchestration"],
   },
   {
-    title: "Digital Marketing & SEO",
-    description: "Drive more traffic and increase conversions with our proven digital marketing strategies.",
-    icon: "📈",
-    features: ["SEO Strategy", "Content Marketing", "Social Media", "PPC Campaigns"],
+    title: "Data Analytics & BI",
+    description:
+      "Transform raw data into actionable insights with advanced analytics and business intelligence platforms.",
+    icon: BarChart3,
+    features: ["Data Engineering", "Predictive Analytics", "Real-time Dashboards", "Data Governance"],
+  },
+  {
+    title: "IoT & Smart Devices",
+    description: "Connect and optimize your operations with intelligent IoT solutions and edge computing.",
+    icon: Cpu,
+    features: ["IoT Development", "Edge Computing", "Smart Sensors", "Device Management"],
+  },
+  {
+    title: "Blockchain Development",
+    description: "Build secure, decentralized applications and smart contracts for next-generation business models.",
+    icon: Shield,
+    features: ["Smart Contracts", "DeFi Solutions", "NFT Platforms", "Blockchain Integration"],
+  },
+  {
+    title: "Generative AI Agents",
+    description: "Deploy intelligent AI agents that automate complex workflows and enhance customer experiences.",
+    icon: Database,
+    features: ["Conversational AI", "Process Automation", "AI Chatbots", "Workflow Optimization"],
   },
 ]
 
 const stats = [
-  { number: "500+", label: "Projects Completed" },
-  { number: "98%", label: "Client Satisfaction" },
-  { number: "5+", label: "Years Experience" },
-  { number: "50+", label: "Happy Clients" },
+  { number: "500+", label: "AI-powered solutions delivered" },
+  { number: "Fortune 500", label: "clients trust us" },
+  { number: "15+", label: "Years of Digital Innovation" },
+  { number: "98%", label: "Client Success Rate" },
 ]
 
 const testimonials = [
   {
     name: "Sarah Johnson",
-    company: "TechStart Inc.",
-    content: "GSGROUPS transformed our online presence completely. The new website increased our conversions by 150%!",
+    company: "HealthTech Innovations",
+    content:
+      "GSGROUPS transformed our healthcare platform with AI-powered diagnostics. Patient outcomes improved by 40% within 6 months!",
     rating: 5,
   },
   {
     name: "Michael Chen",
-    company: "E-commerce Plus",
-    content: "Professional, creative, and results-driven. They delivered exactly what we needed and more.",
+    company: "RetailMax Corp",
+    content:
+      "Their AI-driven supply chain optimization reduced our costs by 30% and improved delivery times significantly.",
     rating: 5,
   },
   {
     name: "Emily Rodriguez",
-    company: "Local Business Co.",
-    content: "The branding work they did for us was exceptional. Our brand now truly reflects our values.",
+    company: "FinanceFirst Bank",
+    content:
+      "The fraud detection AI system they built has prevented millions in losses. Exceptional AI expertise and implementation.",
     rating: 5,
+  },
+]
+
+const industries = [
+  {
+    title: "AI in Healthcare",
+    description:
+      "Revolutionize patient care with diagnostic AI, predictive analytics, and personalized treatment plans.",
+    image: "/placeholder-ut40t.png",
+  },
+  {
+    title: "AI in Manufacturing",
+    description: "Optimize production with predictive maintenance, quality control AI, and smart factory solutions.",
+    image: "/placeholder-i06xq.png",
+  },
+  {
+    title: "AI in Retail",
+    description:
+      "Enhance customer experience with personalized recommendations, inventory optimization, and demand forecasting.",
+    image: "/placeholder-pvb6b.png",
+  },
+  {
+    title: "AI in BFSI",
+    description:
+      "Strengthen financial services with fraud detection, risk assessment, and algorithmic trading solutions.",
+    image: "/placeholder-yreyx.png",
   },
 ]
 
@@ -75,7 +135,37 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <HeroSlider />
+      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              Build Your AI-Native Enterprise Today
+            </h1>
+            <p className="text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
+              Leverage Generative AI, Machine Learning, and Data Engineering to scale innovation and transform your
+              business operations.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+              <Button asChild size="lg" className="px-8">
+                <Link href="/contact">
+                  Get Your Free AI Strategy Call
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="px-8 bg-transparent">
+                <Link href="/portfolio">View AI Solutions</Link>
+              </Button>
+            </div>
+
+            {/* Brand Snapshot */}
+            <div className="text-center text-muted-foreground">
+              <p className="text-lg font-medium">
+                500+ AI-powered solutions delivered | Trusted by Fortune 500 clients | 15+ Years of Digital Innovation
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Stats Section */}
       <section className="py-12 lg:py-16 bg-muted/50">
@@ -95,32 +185,73 @@ export default async function HomePage() {
       <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Our Services</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              AI & Digital Transformation Services
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We offer comprehensive digital solutions to help your business thrive in the digital landscape.
+              Comprehensive AI solutions to accelerate your digital transformation journey and drive measurable business
+              outcomes.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card
-                key={index}
-                className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/20"
-              >
+            {services.map((service, index) => {
+              const IconComponent = service.icon
+              return (
+                <Card
+                  key={index}
+                  className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/20"
+                >
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-200">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                          <CheckCircle className="h-4 w-4 text-accent mr-2 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Section */}
+      <section className="py-16 lg:py-20 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">AI Solutions Across Industries</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Transforming businesses across sectors with industry-specific AI solutions and deep domain expertise.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {industries.map((industry, index) => (
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div className="aspect-video relative overflow-hidden">
+                  <Image
+                    src={industry.image || "/placeholder.svg"}
+                    alt={industry.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <CardContent className="p-6">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-200">
-                    {service.title}
+                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {industry.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                        <CheckCircle className="h-4 w-4 text-accent mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{industry.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -129,14 +260,16 @@ export default async function HomePage() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 lg:py-20 bg-muted/50">
+      <section className="py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">Why Choose GSGROUPS?</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                Why Choose GSGROUPS for AI Transformation?
+              </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                We combine creativity with strategy to deliver digital solutions that not only look great but also drive
-                real business results.
+                We combine cutting-edge AI technology with strategic business insights to deliver solutions that not
+                only innovate but also drive measurable ROI and competitive advantage.
               </p>
 
               <div className="space-y-6">
@@ -145,9 +278,10 @@ export default async function HomePage() {
                     <Users className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-2">Expert Team</h3>
+                    <h3 className="font-semibold text-foreground mb-2">AI Expert Team</h3>
                     <p className="text-muted-foreground">
-                      Our experienced team brings years of expertise in design, development, and marketing.
+                      Our certified AI engineers and data scientists bring deep expertise in machine learning,
+                      generative AI, and enterprise-scale implementations.
                     </p>
                   </div>
                 </div>
@@ -157,9 +291,10 @@ export default async function HomePage() {
                     <Award className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-2">Proven Results</h3>
+                    <h3 className="font-semibold text-foreground mb-2">Proven AI ROI</h3>
                     <p className="text-muted-foreground">
-                      We've helped hundreds of businesses achieve their digital goals with measurable results.
+                      We've delivered 500+ AI solutions with measurable business impact, from 40% efficiency gains to
+                      millions in cost savings for our Fortune 500 clients.
                     </p>
                   </div>
                 </div>
@@ -169,9 +304,10 @@ export default async function HomePage() {
                     <Zap className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-2">Fast Delivery</h3>
+                    <h3 className="font-semibold text-foreground mb-2">Rapid AI Deployment</h3>
                     <p className="text-muted-foreground">
-                      We work efficiently to deliver high-quality projects on time and within budget.
+                      Our agile AI development methodology ensures fast time-to-market with enterprise-grade security
+                      and scalability built-in from day one.
                     </p>
                   </div>
                 </div>
@@ -181,11 +317,11 @@ export default async function HomePage() {
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center">
                 <Image
-                  src="/images/gsgroups-logo.png"
-                  alt="GSGROUPS Team"
-                  width={300}
-                  height={300}
-                  className="w-64 h-auto opacity-80"
+                  src="/placeholder-597hi.png"
+                  alt="AI Technology Innovation"
+                  width={400}
+                  height={400}
+                  className="w-80 h-auto opacity-80 rounded-lg"
                 />
               </div>
             </div>
@@ -194,12 +330,13 @@ export default async function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 lg:py-20">
+      <section className="py-16 lg:py-20 bg-muted/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">What Our Clients Say</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">AI Transformation Success Stories</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what our satisfied clients have to say about working with us.
+              Discover how leading organizations achieved breakthrough results with our AI solutions and digital
+              transformation expertise.
             </p>
           </div>
 
@@ -227,15 +364,17 @@ export default async function HomePage() {
       {/* CTA Section */}
       <section className="py-16 lg:py-20 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Transform Your Digital Presence?</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+            Talk to Our AI Consultants – Start Your Digital Transformation Journey
+          </h2>
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed">
-            Let's work together to create something amazing. Get in touch today and let's discuss how we can help your
-            business grow.
+            Ready to accelerate innovation with AI? Get a free consultation to discover how our AI solutions can
+            transform your business operations and drive competitive advantage.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button asChild size="lg" variant="secondary" className="px-8">
               <Link href="/contact">
-                Start Your Project
+                Book Free AI Strategy Call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -245,7 +384,7 @@ export default async function HomePage() {
               variant="outline"
               className="px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
             >
-              <Link href="/portfolio">View Portfolio</Link>
+              <Link href="/resources/case-studies">View AI Case Studies</Link>
             </Button>
           </div>
         </div>

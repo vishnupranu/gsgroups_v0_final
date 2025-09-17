@@ -1,42 +1,58 @@
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Brain, Award, Zap, Target, Shield } from "lucide-react"
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            About <span className="text-emerald-600">GSGROUPS</span>
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            We are a creative digital agency passionate about transforming ideas into exceptional digital experiences
-            that drive business growth.
-          </p>
+      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
+              Leadership Team Driving AI Innovation
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-pretty">
+              Meet the visionary leaders and AI experts who are transforming businesses across industries with
+              cutting-edge artificial intelligence and digital transformation solutions.
+            </p>
+            <Button asChild size="lg" className="px-8">
+              <Link href="/contact">
+                Join Our AI Experts
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="py-16 px-6 bg-muted/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Company Story Section */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-foreground mb-6">Our Story</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">Our AI Transformation Journey</h2>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                Founded with a vision to bridge the gap between creativity and technology, GSGROUPS has been at the
-                forefront of digital innovation for over a decade.
+                Founded with a vision to democratize artificial intelligence for enterprises, GSGROUPS has been at the
+                forefront of AI innovation for over 15 years, delivering 500+ successful AI implementations.
               </p>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                We believe that great design is not just about aesthetics—it's about creating meaningful connections
-                between brands and their audiences.
+                We believe that AI is not just about technology—it's about creating intelligent solutions that solve
+                real business problems and drive measurable outcomes for our Fortune 500 clients.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our team of passionate designers, developers, and strategists work collaboratively to deliver solutions
-                that exceed expectations.
+                Our team of certified AI engineers, data scientists, and digital transformation experts work
+                collaboratively to accelerate innovation and competitive advantage for businesses worldwide.
               </p>
             </div>
             <div className="relative">
-              <img
-                src="/modern-office-collaboration.png"
-                alt="GSGROUPS team collaboration"
+              <Image
+                src="/placeholder.svg?key=ai-team"
+                alt="GSGROUPS AI team collaboration"
+                width={600}
+                height={400}
                 className="rounded-lg shadow-lg"
               />
             </div>
@@ -45,78 +61,165 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">Our Values</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Innovation</h3>
-              <p className="text-muted-foreground">
-                We embrace cutting-edge technologies and creative approaches to solve complex challenges.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Quality</h3>
-              <p className="text-muted-foreground">
-                Every project receives meticulous attention to detail and rigorous quality assurance.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">Collaboration</h3>
-              <p className="text-muted-foreground">
-                We work closely with our clients as partners to achieve shared success.
-              </p>
-            </div>
+      <section className="py-16 lg:py-20 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-center text-foreground mb-12">
+            Our AI Leadership Principles
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="text-center border-border">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Brain className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">AI Innovation</h3>
+                <p className="text-muted-foreground">
+                  We pioneer cutting-edge AI technologies and generative solutions that push the boundaries of what's
+                  possible.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="text-center border-border">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-8 h-8 text-accent" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">Business Impact</h3>
+                <p className="text-muted-foreground">
+                  Every AI solution is designed to deliver measurable ROI and competitive advantage for our clients.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="text-center border-border">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">Ethical AI</h3>
+                <p className="text-muted-foreground">
+                  We build responsible AI systems with enterprise-grade security, compliance, and bias mitigation.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16 px-6 bg-muted/30">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">Meet Our Team</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+      {/* Leadership Team Section */}
+      <section className="py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Meet Our AI Leadership Team</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Industry veterans and AI pioneers who combine deep technical expertise with strategic business vision.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: "Sarah Johnson", role: "Creative Director", image: "/professional-creative-director.png" },
-              { name: "Michael Chen", role: "Lead Developer", image: "/professional-lead-developer.png" },
-              { name: "Emily Rodriguez", role: "UX Designer", image: "/professional-woman-ux-designer.png" },
-              { name: "David Kim", role: "Project Manager", image: "/professional-project-manager.png" },
+              {
+                name: "Dr. Sarah Chen",
+                role: "Chief AI Officer",
+                image: "/placeholder.svg?key=cai-officer",
+                expertise: "PhD in Machine Learning, Former Google AI Research",
+                achievements: "Led 100+ AI implementations",
+              },
+              {
+                name: "Michael Rodriguez",
+                role: "VP of Digital Transformation",
+                image: "/placeholder.svg?key=vp-digital",
+                expertise: "15+ years enterprise architecture, ex-Microsoft",
+                achievements: "Transformed 50+ Fortune 500 companies",
+              },
+              {
+                name: "Dr. Emily Wang",
+                role: "Head of Data Science",
+                image: "/placeholder.svg?key=head-data",
+                expertise: "PhD in Statistics, Former Amazon ML Scientist",
+                achievements: "Built predictive models saving $100M+",
+              },
+              {
+                name: "David Kim",
+                role: "Director of AI Engineering",
+                image: "/placeholder.svg?key=director-ai",
+                expertise: "ML Engineering at Scale, ex-Tesla Autopilot",
+                achievements: "Deployed AI systems serving 10M+ users",
+              },
             ].map((member, index) => (
-              <div key={index} className="text-center">
-                <img
-                  src={member.image || "/placeholder.svg"}
-                  alt={member.name}
-                  className="w-full h-64 object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
-                <p className="text-muted-foreground">{member.role}</p>
-              </div>
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300">
+                <CardContent className="p-6 text-center">
+                  <div className="relative mb-4">
+                    <Image
+                      src={member.image || "/placeholder.svg"}
+                      alt={member.name}
+                      width={200}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">{member.name}</h3>
+                  <p className="text-primary font-medium mb-2">{member.role}</p>
+                  <p className="text-sm text-muted-foreground mb-2">{member.expertise}</p>
+                  <p className="text-xs text-accent font-medium">{member.achievements}</p>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Company Stats Section */}
+      <section className="py-16 lg:py-20 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Our AI Impact</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Measurable results that demonstrate our commitment to AI excellence and business transformation.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { number: "500+", label: "AI Solutions Delivered", icon: Brain },
+              { number: "Fortune 500", label: "Enterprise Clients", icon: Award },
+              { number: "15+", label: "Years AI Innovation", icon: Zap },
+              { number: "98%", label: "Client Success Rate", icon: Target },
+            ].map((stat, index) => {
+              const IconComponent = stat.icon
+              return (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <IconComponent className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="text-3xl lg:text-4xl font-bold text-primary mb-2">{stat.number}</div>
+                  <div className="text-sm lg:text-base text-muted-foreground">{stat.label}</div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 lg:py-20 bg-primary text-primary-foreground">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Work with AI Leaders?</h2>
+          <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+            Join the Fortune 500 companies who trust our AI expertise to drive their digital transformation initiatives.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button asChild size="lg" variant="secondary" className="px-8">
+              <Link href="/contact">
+                Schedule AI Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="px-8 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
+            >
+              <Link href="/careers">Join Our AI Team</Link>
+            </Button>
           </div>
         </div>
       </section>

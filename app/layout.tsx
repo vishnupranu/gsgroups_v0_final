@@ -20,29 +20,69 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "GSGROUPS - Creative Digital Agency",
+  title: "GSGROUPS - AI Development & Digital Transformation Company",
   description:
-    "We create stunning digital experiences that drive results. Professional web design, branding, and digital marketing services.",
-  keywords: ["web design", "digital agency", "branding", "digital marketing", "creative agency"],
+    "Leading AI development company specializing in Generative AI, Machine Learning, Cloud Services, and Digital Transformation. 500+ AI solutions delivered for Fortune 500 clients.",
+  keywords: [
+    "AI Development",
+    "Generative AI",
+    "Machine Learning Solutions",
+    "Digital Transformation",
+    "Enterprise Data Engineering",
+    "Cloud Services",
+    "DevOps",
+    "IoT Development",
+    "Blockchain Services",
+    "AI in Healthcare",
+    "AI in Retail",
+    "AI in Manufacturing",
+    "Predictive Analytics",
+    "Intelligent Automation",
+    "AI Consulting",
+  ],
   authors: [{ name: "GSGROUPS" }],
   creator: "GSGROUPS",
   publisher: "GSGROUPS",
   openGraph: {
-    title: "GSGROUPS - Creative Digital Agency",
-    description: "We create stunning digital experiences that drive results",
+    title: "GSGROUPS - AI Development & Digital Transformation Company",
+    description:
+      "Build your AI-native enterprise with our cutting-edge AI solutions. 500+ AI-powered solutions delivered for Fortune 500 clients.",
     type: "website",
     locale: "en_US",
+    siteName: "GSGROUPS",
+    images: [
+      {
+        url: "/images/og-ai-transformation.jpg",
+        width: 1200,
+        height: 630,
+        alt: "GSGROUPS AI Development & Digital Transformation",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GSGROUPS - Creative Digital Agency",
-    description: "We create stunning digital experiences that drive results",
+    title: "GSGROUPS - AI Development & Digital Transformation Company",
+    description:
+      "Build your AI-native enterprise with our cutting-edge AI solutions. 500+ AI-powered solutions delivered.",
+    images: ["/images/twitter-ai-card.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-    generator: 'v0.app'
+  alternates: {
+    canonical: "https://gsgroups.net",
+  },
+  category: "Technology",
+  classification: "AI Development, Digital Transformation, Machine Learning",
+  generator: "v0.app",
 }
 
 export default async function RootLayout({
@@ -58,11 +98,11 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${geist.variable} ${manrope.variable} antialiased`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/android-chrome-192x192.png" type="image/png" sizes="192x192" />
-        <link rel="apple-touch-icon" href="/android-chrome-192x192.png" />
+        <link rel="icon" href="/images/gslogo.png" sizes="any" />
+        <link rel="icon" href="/images/gslogo.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/images/gslogo.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#10b981" />
+        <meta name="theme-color" content="#1e40af" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="min-h-screen bg-background text-foreground">

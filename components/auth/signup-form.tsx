@@ -18,7 +18,7 @@ function SubmitButton() {
     <Button
       type="submit"
       disabled={pending}
-      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
       size="lg"
     >
       {pending ? (
@@ -37,25 +37,35 @@ export function SignUpForm() {
   const [state, formAction] = useActionState(signUp, null)
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md bg-gradient-to-br from-white to-blue-50 border-blue-200">
       <CardHeader className="text-center">
         <div className="flex justify-center mb-4">
-          <Image src="/images/gsgroups-logo.png" alt="GSGROUPS" width={160} height={36} className="h-8 w-auto" />
+          <Image src="/images/gslogo.png" alt="GSGROUPS" width={160} height={36} className="h-8 w-auto" />
         </div>
-        <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
-        <CardDescription>Join GSGROUPS and start your digital journey</CardDescription>
+        <CardTitle className="text-2xl font-bold text-gray-800">Create an account</CardTitle>
+        <CardDescription className="text-gray-600">Join GSGROUPS and start your digital journey</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* OAuth Buttons */}
         <div className="space-y-3">
           <form action={() => signInWithOAuth("google")}>
-            <Button type="submit" variant="outline" className="w-full bg-transparent" size="lg">
+            <Button
+              type="submit"
+              variant="outline"
+              className="w-full bg-white border-blue-200 hover:bg-blue-50"
+              size="lg"
+            >
               <Mail className="mr-2 h-4 w-4" />
               Continue with Google
             </Button>
           </form>
           <form action={() => signInWithOAuth("github")}>
-            <Button type="submit" variant="outline" className="w-full bg-transparent" size="lg">
+            <Button
+              type="submit"
+              variant="outline"
+              className="w-full bg-white border-blue-200 hover:bg-blue-50"
+              size="lg"
+            >
               <Github className="mr-2 h-4 w-4" />
               Continue with GitHub
             </Button>
@@ -74,33 +84,47 @@ export function SignUpForm() {
         {/* Email/Password Form */}
         <form action={formAction} className="space-y-4">
           {state?.error && (
-            <div className="bg-destructive/10 border border-destructive/50 text-destructive px-4 py-3 rounded-md text-sm">
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
               {state.error}
             </div>
           )}
 
           {state?.success && (
-            <div className="bg-accent/10 border border-accent/50 text-accent px-4 py-3 rounded-md text-sm">
+            <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm">
               {state.success}
             </div>
           )}
 
           <div className="space-y-2">
-            <label htmlFor="fullName" className="text-sm font-medium text-foreground">
+            <label htmlFor="fullName" className="text-sm font-medium text-gray-700">
               Full Name
             </label>
-            <Input id="fullName" name="fullName" type="text" placeholder="John Doe" required className="w-full" />
+            <Input
+              id="fullName"
+              name="fullName"
+              type="text"
+              placeholder="John Doe"
+              required
+              className="w-full border-blue-200 focus:border-blue-500"
+            />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-foreground">
+            <label htmlFor="email" className="text-sm font-medium text-gray-700">
               Email
             </label>
-            <Input id="email" name="email" type="email" placeholder="you@example.com" required className="w-full" />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              className="w-full border-blue-200 focus:border-blue-500"
+            />
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="password" className="text-sm font-medium text-foreground">
+            <label htmlFor="password" className="text-sm font-medium text-gray-700">
               Password
             </label>
             <Input
@@ -110,17 +134,17 @@ export function SignUpForm() {
               placeholder="At least 8 characters"
               required
               minLength={8}
-              className="w-full"
+              className="w-full border-blue-200 focus:border-blue-500"
             />
           </div>
 
-          <div className="text-xs text-muted-foreground">
+          <div className="text-xs text-gray-600">
             By creating an account, you agree to our{" "}
-            <Link href="/terms" className="text-primary hover:text-primary/80 transition-colors">
+            <Link href="/terms" className="text-blue-600 hover:text-blue-800 transition-colors">
               Terms of Service
             </Link>{" "}
             and{" "}
-            <Link href="/privacy" className="text-primary hover:text-primary/80 transition-colors">
+            <Link href="/privacy" className="text-blue-600 hover:text-blue-800 transition-colors">
               Privacy Policy
             </Link>
             .
@@ -129,9 +153,9 @@ export function SignUpForm() {
           <SubmitButton />
         </form>
 
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <Link href="/auth/login" className="text-primary hover:text-primary/80 transition-colors font-medium">
+          <Link href="/auth/login" className="text-blue-600 hover:text-blue-800 transition-colors font-medium">
             Sign in
           </Link>
         </div>

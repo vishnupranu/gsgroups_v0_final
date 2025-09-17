@@ -14,17 +14,43 @@ const navigation = [
     name: "Services",
     href: "/services",
     submenu: [
-      { name: "Web Design", href: "/services/web-design" },
-      { name: "Branding", href: "/services/branding" },
-      { name: "Mobile Apps", href: "/services/mobile-apps" },
-      { name: "E-commerce", href: "/services/e-commerce" },
-      { name: "Digital Marketing", href: "/services/digital-marketing" },
+      { name: "AI Development & Generative AI Solutions", href: "/services/ai-development" },
+      { name: "Machine Learning & Predictive Analytics", href: "/services/machine-learning" },
+      { name: "Cloud Services & DevOps", href: "/services/cloud-devops" },
+      { name: "Enterprise Data Engineering", href: "/services/data-engineering" },
+      { name: "IoT Solutions & Smart Device Integration", href: "/services/iot-solutions" },
+      { name: "Blockchain Development Services", href: "/services/blockchain" },
+      { name: "Agentic AI & Intelligent Automation", href: "/services/agentic-ai" },
+      { name: "Software Product Engineering", href: "/services/software-engineering" },
+      { name: "QA Testing & Continuous Delivery", href: "/services/qa-testing" },
+    ],
+  },
+  {
+    name: "Industries",
+    href: "/industries",
+    submenu: [
+      { name: "AI Solutions for Healthcare", href: "/industries/healthcare" },
+      { name: "AI Solutions for Retail & E-Commerce", href: "/industries/retail" },
+      { name: "AI for BFSI", href: "/industries/bfsi" },
+      { name: "AI for Manufacturing & Supply Chain", href: "/industries/manufacturing" },
+      { name: "AI in Agriculture & Smart Farming", href: "/industries/agriculture" },
+      { name: "AI for Gaming & Entertainment", href: "/industries/gaming" },
+    ],
+  },
+  {
+    name: "Resources",
+    href: "/resources",
+    submenu: [
+      { name: "Case Studies", href: "/resources/case-studies" },
+      { name: "Research & Industry Reports", href: "/resources/research" },
+      { name: "Blog: AI Trends & Innovation", href: "/blog" },
+      { name: "Webinars & Thought Leadership", href: "/resources/webinars" },
     ],
   },
   { name: "Portfolio", href: "/portfolio" },
-  { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "Leadership Team", href: "/about" },
+  { name: "Careers", href: "/careers" },
+  { name: "Contact Us", href: "/contact" },
 ]
 
 interface HeaderProps {
@@ -63,7 +89,7 @@ export function Header({ user }: HeaderProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image
-              src="/images/gsgroups-logo.png"
+              src="/images/gslogo.png"
               alt="GSGROUPS"
               width={180}
               height={40}
@@ -120,7 +146,7 @@ export function Header({ user }: HeaderProps) {
                   <Link href="/auth/login">Sign In</Link>
                 </Button>
                 <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                  <Link href="/contact">Get Started</Link>
+                  <Link href="/contact">Get Free AI Consultation</Link>
                 </Button>
               </>
             )}
@@ -184,7 +210,7 @@ export function Header({ user }: HeaderProps) {
                     </Button>
                     <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                       <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                        Get Started
+                        Get Free AI Consultation
                       </Link>
                     </Button>
                   </>
